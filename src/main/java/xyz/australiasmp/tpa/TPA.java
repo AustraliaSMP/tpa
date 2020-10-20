@@ -27,7 +27,7 @@ public class TPA extends JavaPlugin {
                 Player target = player.getServer().getPlayer(args[0]);
                 if (target != null) {
                     this.tpa.put(target, player);
-                    TextComponent acceptMessage = new TextComponent(ChatColor.GOLD + ChatColor.BOLD + "TP Request Sent By: " + player.getName() + " Click Here To " + ChatColor.GREEN + "Accept!");
+                    TextComponent acceptMessage = new TextComponent(ChatColor.GOLD + "TP Request Sent By: " + player.getName() + " Click Here To " + ChatColor.GREEN + "Accept!");
                     acceptMessage.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tpaccept"));
                     acceptMessage.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, (
                             new ComponentBuilder(ChatColor.GREEN + "Click Here To Accept The Teleport")).create()));
@@ -37,7 +37,7 @@ public class TPA extends JavaPlugin {
                     denyMessage.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, (
                             new ComponentBuilder(ChatColor.RED + "Click Here To Deny The Teleport")).create()));
                     target.spigot().sendMessage((BaseComponent)denyMessage);
-                    player.sendMessage(ChatColor.GREEN + ChatColor.BOLD + "You Have Sent A TP Request To: " + ChatColor.GOLD + target.getName());
+                    player.sendMessage(ChatColor.AQUA + "You Have Sent A TP Request To: " + ChatColor.LIGHT_PURPLE + target.getName());
                     return true;
                 }
                 return true;
@@ -47,13 +47,13 @@ public class TPA extends JavaPlugin {
         if (label.equalsIgnoreCase("tpaccept") &&
                 this.tpa.get(player) != null) {
             ((Player)this.tpa.get(player)).teleport((Entity)player);
-            player.sendMessage(ChatColor.AQUA + "You Successfully" + ChatColor.GOLD + " Accepted " + ChatColor.AQUA + "The Teleportation!");
+            player.sendMessage(ChatColor.AQUA + "You Successfully" + ChatColor.GREEN + " Accepted " + ChatColor.AQUA + "The Teleportation!");
             this.tpa.put(player, null);
             return true;
         }
         if (label.equalsIgnoreCase("tpdeny") &&
                 this.tpa.get(player) != null) {
-            player.sendMessage(ChatColor.AQUA + "You Successfully" + ChatColor.GOLD + " Denied " + ChatColor.AQUA + "The Teleportation!");
+            player.sendMessage(ChatColor.AQUA + "You Successfully" + ChatColor.RED + " Denied " + ChatColor.AQUA + "The Teleportation!");
             this.tpa.put(player, null);
             return true;
         }
