@@ -1,0 +1,6 @@
+name: TPA
+version: ${project.version}
+main: xyz.australiasmp.tpa.tpa.TPA
+api-version: 1.15
+authors: [ ppug ]
+description: TPA plugin for Australia SMP
